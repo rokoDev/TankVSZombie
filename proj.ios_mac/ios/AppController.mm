@@ -27,6 +27,7 @@
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#include "Helper.hpp"
 
 @implementation AppController
 
@@ -97,6 +98,7 @@ static AppDelegate s_sharedApplication;
      */
      //We don't need to call this method any more. It will interupt user defined game pause&resume logic
     /* cocos2d::Director::getInstance()->pause(); */
+    AppDelegateProtocol::callApplicationWillResignActive();
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -105,6 +107,7 @@ static AppDelegate s_sharedApplication;
      */
      //We don't need to call this method any more. It will interupt user defined game pause&resume logic
     /* cocos2d::Director::getInstance()->resume(); */
+    AppDelegateProtocol::callApplicationDidBecomeActive();
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -127,6 +130,7 @@ static AppDelegate s_sharedApplication;
      Called when the application is about to terminate.
      See also applicationDidEnterBackground:.
      */
+    AppDelegateProtocol::callApplicationWillTerminate();
 }
 
 
